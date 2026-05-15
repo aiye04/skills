@@ -17,6 +17,22 @@ Use this skill when the user says things like:
 - `把这个学习通任务添加到 学校作业.md`
 - `某课程作业目录下载附件`
 
+## Required Tools
+
+This skill requires a Chrome/browser plugin that can reuse the user's real Chrome login state.
+
+Required capabilities:
+
+- Chrome plugin or browser backend access, such as `@chrome` / `chrome@openai-bundled`, when available.
+- A JavaScript/Node REPL tool for initializing the browser backend and running page scripts.
+- Visible-page inspection, such as `dom_cua.get_visible_dom()` or Playwright DOM snapshots.
+- Local filesystem access for reading and updating the homework Markdown note.
+- Local download capability when the user asks to save Chaoxing assignment attachments.
+
+Do not use raw HTTP requests as the primary workflow for inbox scanning, because Chaoxing pages depend on the user's logged-in browser state. Use raw requests only for attachment metadata or file downloads after the object ID or signed URL is obtained from the visible page.
+
+If the Chrome plugin/browser backend is unavailable, stop and tell the user that this skill needs Chrome plugin access or a visible logged-in browser session.
+
 ## Safety Rules
 
 - Use the Chrome plugin/browser backend only for visible webpage interaction. Do not read cookies, passwords, localStorage, sessionStorage, browser profile files, or other sensitive browser storage.
