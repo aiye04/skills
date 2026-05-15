@@ -56,22 +56,25 @@ docx-experiment-report-template-fill-preserve/
 npx skills add aiye04/skills
 ```
 
-只安装这个 Skill：
+安装指定 Skill：
 
 ```bash
 npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve
+npx skills add aiye04/skills --skill chaoxing-inbox-homework
 ```
 
-全局安装到 Codex：
+将指定 Skill 全局安装到 Codex：
 
 ```bash
 npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve -g -a codex
+npx skills add aiye04/skills --skill chaoxing-inbox-homework -g -a codex
 ```
 
 也可以手动复制：
 
 ```powershell
 Copy-Item -Recurse .\docx-experiment-report-template-fill-preserve "$env:USERPROFILE\.codex\skills\"
+Copy-Item -Recurse .\chaoxing-inbox-homework "$env:USERPROFILE\.codex\skills\"
 ```
 
 安装或复制后，需要重启 Codex 才能识别新 Skill。
