@@ -2,12 +2,13 @@
 
 Personal agent skills for Codex and other agents that support the `SKILL.md` format.
 
-This repository follows the common skills repository layout:
+Language: English | [简体中文](./README-ZH.md)
+
+This repository keeps each personal skill at the repository root:
 
 ```text
-skills/
-└── docx-experiment-report-template-fill-preserve/
-    └── SKILL.md
+docx-experiment-report-template-fill-preserve/
+└── SKILL.md
 ```
 
 ## Available Skills
@@ -56,7 +57,7 @@ npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preser
 You can also copy the skill manually:
 
 ```powershell
-Copy-Item -Recurse .\skills\docx-experiment-report-template-fill-preserve "$env:USERPROFILE\.codex\skills\"
+Copy-Item -Recurse .\docx-experiment-report-template-fill-preserve "$env:USERPROFILE\.codex\skills\"
 ```
 
 Restart Codex after installing or copying a new skill.
@@ -75,21 +76,3 @@ description: What the skill does and when to use it.
 
 Instructions for the agent.
 ```
-
-## 中文说明
-
-这是我的个人 Agent Skills 仓库，主要给 Codex 使用。
-
-当前包含：
-
-- `docx-experiment-report-template-fill-preserve`：用于补全 Word 实验报告、课程报告、需求文档等 `.docx` 模板。重点是只填写空白和占位符，并尽量保留原始格式。
-
-推荐目录结构：
-
-```text
-skills/
-└── docx-experiment-report-template-fill-preserve/
-    └── SKILL.md
-```
-
-安装后需要重启 Codex 才能识别新 Skill。
