@@ -1,48 +1,95 @@
-<h1 align="center">🧰 Alier-skill</h1>
-<p align="center"><strong>个人 AI Skills 合集</strong> — 一次配置，多工具复用</p>
+# skills
 
-<p align="center">
-  <img src="https://img.shields.io/github/license/aiye04/Alier-skill" alt="License">
-  <img src="https://img.shields.io/badge/skills-1-blue" alt="Skills Count">
-  <img src="https://img.shields.io/badge/tools-Claude%20Code%20%7C%20Codex%20%7C%20OpenClaw-orange" alt="Compatible Tools">
-</p>
+Personal agent skills for Codex and other agents that support the `SKILL.md` format.
 
----
+This repository follows the common skills repository layout:
 
-## 什么是 Skill？
+```text
+skills/
+└── docx-experiment-report-template-fill-preserve/
+    └── SKILL.md
+```
 
-Skill 是一组预定义的指令模板，让 AI 编码助手按特定流程和规则执行任务。一个 Skill 就是一个包含 `SKILL.md` 的文件夹，可以被 Claude Code、Codex、OpenClaw 等工具直接加载。
+## Available Skills
 
-## 已有 Skills
+### `docx-experiment-report-template-fill-preserve`
 
-| Skill | 触发场景 |
-|-------|---------|
-| [docx-experiment-report-template-fill-preserve](./skills/docx-experiment-report-template-fill-preserve/) | 给定 .docx 模板 → 识别占位/空白处 → 按规则自动填充，保留原有格式和已有内容 |
+Fill and update Word document templates while preserving existing content and formatting.
 
-## 快速开始
+Use it when working with `.docx` templates such as:
+
+- experiment reports
+- course reports
+- requirements documents
+- form-like documents
+
+The skill is designed for prompts like:
+
+- "only fill the blank parts"
+- "do not change existing content"
+- "preserve the original format"
+- "complete this experiment report template"
+- "replace placeholders such as XXX or 待填写"
+
+It keeps the original document structure, headings, tables, styles, headers, footers, and page layout as the source of truth.
+
+## Install
+
+Install all skills from this repository:
 
 ```bash
-# 1. 克隆仓库
-git clone https://github.com/aiye04/Alier-skill.git
-
-# 2. 安装到对应工具
-cp -r Alier-skill/skills/<skill名> ~/.agents/skills/
-
-# 3. 在对话中直接描述需求即可触发
+npx skills add aiye04/skills
 ```
 
-## 目录结构
+Install only this skill:
 
-```
-Alier-skill/
-├── skills/            # 所有 Skill
-│   └── <skill名>/
-│       └── SKILL.md   # Skill 定义文件
-├── .gitignore
-├── LICENSE
-└── README.md
+```bash
+npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve
 ```
 
-## 贡献
+Install globally for Codex:
 
-欢迎提 Issue / PR 分享你自己的 Skills。
+```bash
+npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve -g -a codex
+```
+
+You can also copy the skill manually:
+
+```powershell
+Copy-Item -Recurse .\skills\docx-experiment-report-template-fill-preserve "$env:USERPROFILE\.codex\skills\"
+```
+
+Restart Codex after installing or copying a new skill.
+
+## Skill Format
+
+Each skill is a directory containing a `SKILL.md` file with YAML frontmatter:
+
+```markdown
+---
+name: example-skill
+description: What the skill does and when to use it.
+---
+
+# Example Skill
+
+Instructions for the agent.
+```
+
+## 中文说明
+
+这是我的个人 Agent Skills 仓库，主要给 Codex 使用。
+
+当前包含：
+
+- `docx-experiment-report-template-fill-preserve`：用于补全 Word 实验报告、课程报告、需求文档等 `.docx` 模板。重点是只填写空白和占位符，并尽量保留原始格式。
+
+推荐目录结构：
+
+```text
+skills/
+└── docx-experiment-report-template-fill-preserve/
+    └── SKILL.md
+```
+
+安装后需要重启 Codex 才能识别新 Skill。
