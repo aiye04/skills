@@ -56,22 +56,25 @@ Install all skills from this repository:
 npx skills add aiye04/skills
 ```
 
-Install only this skill:
+Install a specific skill:
 
 ```bash
 npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve
+npx skills add aiye04/skills --skill chaoxing-inbox-homework
 ```
 
-Install globally for Codex:
+Install specific skills globally for Codex:
 
 ```bash
 npx skills add aiye04/skills --skill docx-experiment-report-template-fill-preserve -g -a codex
+npx skills add aiye04/skills --skill chaoxing-inbox-homework -g -a codex
 ```
 
-You can also copy the skill manually:
+You can also copy a skill manually:
 
 ```powershell
 Copy-Item -Recurse .\docx-experiment-report-template-fill-preserve "$env:USERPROFILE\.codex\skills\"
+Copy-Item -Recurse .\chaoxing-inbox-homework "$env:USERPROFILE\.codex\skills\"
 ```
 
 Restart Codex after installing or copying a new skill.
